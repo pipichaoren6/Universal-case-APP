@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { login, getData } from '@/api/api';
+import {  getData } from '@/api/api';
 export default {
   data() {
     return {
@@ -28,65 +28,9 @@ export default {
     getData();
   },
   methods: {
-    // getUserIpAndLogin() {
-    //   // 获取用户的 IP 地址
-    //   return new Promise((resolve, reject) => {
-    //     fetch('https://api64.ipify.org/?format=json') // 使用一个公共 API 获取 IP 地址
-    //       .then(response => {
-    //         if (!response.ok) {
-    //           reject('网络请求失败'); // 如果请求失败，拒绝 Promise
-    //           return;
-    //         }
-    //         return response.json(); // 解析 JSON 数据
-    //       })
-    //       .then(data => {
-    //         const loginTime = new Date().toLocaleString('sv-SE', { timeZone: 'Asia/Shanghai' }).replace('T', ' '); // 获取本地时间并格式化为 'YYYY-MM-DD HH:mm:ss'
-    //         const userIp = data.ip; // 获取 IP 地址
-    //         console.log('用户 IP:', userIp);
-    //         // 加密 IP 地址
-    //         const encryptedIp = btoa(userIp); // 使用 base64 编码进行简单加密
-    //         // 进行登录请求
-    //         return login(this.username, this.password, encryptedIp, loginTime); // 将 IP 地址传递给登录 API
-    //       })
-    //       .then(response => {
-    //         console.log('成功:', response.data);
-    //       })
-    //       // .then(() => {
-    //       //   return getData(); // 将 getData() 放在 Promise 链中
-    //       // })
-    //       // .then((response) => {
-    //       //   console.log('get请求:  ' + JSON.stringify(response.data));
-
-    //       // })
-    //       .catch(error => {
-    //         console.error('错误:', error);
-    //       });
-    //   })
-
-    // },
     async getUserIpAndLogin(username, password) {
-  try {
-    const response = await fetch('https://api64.ipify.org/?format=json');
-    if (!response.ok) throw new Error('网络请求失败');
 
-    const { ip } = await response.json();
-    const loginTime = new Date().toLocaleString('sv-SE', { timeZone: 'Asia/Shanghai' }).replace('T', ' ');
-    console.log('用户 IP:', ip);
-
-    // 使用 base64 编码进行简单加密
-    const encryptedIp = btoa(ip);
-
-    // 执行登录操作
-    const loginResponse = await login(username, password, encryptedIp, loginTime);
-    console.log('成功:', loginResponse.data);
-
-    // 下面的代码可以根据实际需求决定是否保留
-    // const getDataResponse = await getData();
-    // console.log('get请求:  ' + JSON.stringify(getDataResponse.data));
-  } catch (error) {
-    console.error('错误:', error);
-  }
-},
+    },
     handleLogin() {
       // 处理登录逻辑
 
