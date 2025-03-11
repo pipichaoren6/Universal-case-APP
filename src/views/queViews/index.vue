@@ -8,9 +8,9 @@
             <option value="update">更新时间</option>
           </select> -->
 
-                <DropdownMenu 
-                :menus="menus" 
-                @item-click="handleMenuItemClick" />
+                <div>
+                    <DropdownMenu :menus="menus" @item-click="handleMenuItemClick" />
+                </div>
 
             </nav>
         </header>
@@ -70,8 +70,10 @@ export default {
         },
         // 处理菜单项点击事件
         // 处理菜单项点击事件
-        handleMenuItemClick(item) {
+        handleMenuItemClick({ item, menuIndex, subIndex }) {
             console.log('点击的菜单项:', item);
+            console.log('菜单索引:', menuIndex);
+            console.log('子菜单索引:', subIndex);
             alert(`你点击了: ${item}`);
         },
     }

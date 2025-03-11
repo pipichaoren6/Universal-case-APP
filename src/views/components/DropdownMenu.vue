@@ -16,9 +16,11 @@
             v-for="(item, subIndex) in menu.items"
             :key="subIndex"
             class="dropdown-item"
-            @click="handleItemClick(item)"
+            @click="handleItemClick(item, index, subIndex)"
           >
-            {{ item }}
+            <span class="item-text">{{ item }}</span>
+            <!-- 选中后显示勾 -->
+            <span v-if="selectedItems[index] === item" class="checkmark">✔</span>
           </div>
         </div>
       </transition>
@@ -40,6 +42,7 @@ export default {
   data() {
     return {
       activeIndex: null, // 当前激活的菜单索引
+      selectedItems: [], // 存储每个菜单的选中项
     };
   },
   methods: {
@@ -54,8 +57,10 @@ export default {
       }
     },
     // 处理菜单项点击事件
-    handleItemClick(item) {
-      this.$emit('item-click', item); // 向父组件传递点击的菜单项
+    handleItemClick(item, menuIndex, subIndex) {
+      // 更新选中项
+      this.selectedItems[menuIndex] = item; // 直接赋值
+      this.$emit('item-click', { item, menuIndex, subIndex }); // 向父组件传递点击的菜单项
     },
   },
 };
@@ -68,7 +73,6 @@ export default {
   width: 100%;
   background-color: #3498db;
   position: relative;
-
 }
 
 /* 菜单按钮样式 */
@@ -96,16 +100,34 @@ export default {
   border-radius: 4px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+  text-align: left; /* 确保内容居左对齐 */
 }
 
+/* 下拉项样式 */
 .dropdown-item {
+  display: flex;
+  justify-content: space-between; /* 文字居左，勾选图标居右 */
+  align-items: center;
   padding: 10px 20px;
   cursor: pointer;
   color: #333;
+  white-space: nowrap;
 }
 
 .dropdown-item:hover {
   background-color: #f1f1f1;
+}
+
+/* 下拉项文字样式 */
+.item-text {
+  flex: 1; /* 文字占据剩余空间 */
+}
+
+/* 勾选图标样式 */
+.checkmark {
+  margin-left: 10px;
+  color: green;
+  font-weight: bold;
 }
 
 /* 过渡动画 */
