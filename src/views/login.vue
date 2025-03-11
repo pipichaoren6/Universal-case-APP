@@ -25,7 +25,7 @@ export default {
   mounted() {
     // 页面加载时自动获取用户的 IP 地址并发送到服务器
     this.getUserIpAndLogin();
-    getData();
+    // getData();
   },
   methods: {
     async getUserIpAndLogin(username, password) {
