@@ -2,16 +2,9 @@
     <div class="question-list">
         <header>
             <nav style="width: 100%;">
-                <!-- <select>
-            <option value="free">免费题库</option>
-            <option value="ignore">忽略已掌握</option>
-            <option value="update">更新时间</option>
-          </select> -->
-
                 <div>
                     <DropdownMenu :menus="menus" @item-click="handleMenuItemClick" />
                 </div>
-
             </nav>
         </header>
         <main>
@@ -81,7 +74,10 @@ export default {
 </script>
 
 <style scoped>
-html body { margin: 0 !important; }
+html body {
+    margin: 0 !important;
+}
+
 .question-list {
     font-family: Arial, sans-serif;
 }
