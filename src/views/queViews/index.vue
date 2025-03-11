@@ -35,12 +35,12 @@ export default {
             questions: [
                 { title: '第1题：Javascript如何实现继承？', difficulty: '★★★★★' },
                 { title: '第2题：JS中本地对象、内置对象、宿主对象有什么区别？', difficulty: '★★★★★' },
-                { title: '第3题：for...in和for...of有什么区别？', difficulty: '★★★★★' },
-                { title: '第4题：说说 Javascript 为什么会存在内存泄漏？', difficulty: '★★★★★' },
-                { title: '第5题：es5 中的类和es6中的class有什么区别？', difficulty: '★★★★★' },
+                { title: '第3题：for...in和for...of有什么区别？', difficulty: '★★★' },
+                { title: '第4题：说说 Javascript 为什么会存在内存泄漏？', difficulty: '★★★★' },
+                { title: '第5题：es5 中的类和es6中的class有什么区别？', difficulty: '★★★★' },
                 { title: '第6题：怎么理解ES6中 Generator的使用场景？', difficulty: '★★★★★' },
-                { title: '第7题：bind、call、apply 有什么区别？', difficulty: '★★★★★' },
-                { title: '第8题：大文件怎么实现断点续传？', difficulty: '★★★★★' }
+                { title: '第7题：bind、call、apply 有什么区别？', difficulty: '★★★' },
+                { title: '第8题：大文件怎么实现断点续传？', difficulty: '★' }
             ],
             // 菜单数据
             menus: [
@@ -81,6 +81,7 @@ export default {
 </script>
 
 <style scoped>
+html body { margin: 0 !important; }
 .question-list {
     font-family: Arial, sans-serif;
 }

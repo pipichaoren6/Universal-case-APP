@@ -67,6 +67,7 @@ export default {
 </script>
 
 <style scoped>
+html body { margin: 0 !important; }
 /* 菜单容器样式 */
 .dropdown-menu {
   display: flex;
