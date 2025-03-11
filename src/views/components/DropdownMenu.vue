@@ -67,6 +67,8 @@ export default {
   display: flex;
   width: 100%;
   background-color: #3498db;
+  position: relative;
+
 }
 
 /* 菜单按钮样式 */
@@ -76,7 +78,6 @@ export default {
   color: white;
   text-align: center;
   cursor: pointer;
-  position: relative;
 }
 
 .menu-button:hover {
@@ -88,6 +89,7 @@ export default {
   position: absolute;
   top: 100%;
   left: 0;
+  right: 0;
   width: 100%;
   background-color: white;
   border: 1px solid #ddd;

@@ -16,7 +16,7 @@
         </header>
         <main>
             <article v-for="(question, index) in questions" :key="index">
-                <h2>{{ question.title }}</h2>
+                <h4>{{ question.title }}</h4>
                 <p>难度：{{ question.difficulty }}</p>
                 <button @click="showAnswer(index)">问答题</button>
             </article>
@@ -51,6 +51,10 @@ export default {
                 {
                     name: '菜单2',
                     items: ['子菜单2-1', '子菜单2-2'],
+                },
+                {
+                    name: '菜单3',
+                    items: ['子菜单3-1', '子菜单3-2', '子菜单3-3'],
                 },
                 {
                     name: '菜单3',
