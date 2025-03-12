@@ -40,8 +40,8 @@
     <!-- 题库入口 -->
     <section class="question-bank">
       <h2 class="section-title">题库入口</h2>
-      <div class="grid-container" @click="goBook()">
-        <div v-for="(item, index) in subjects" :key="index" class="grid-item">
+      <div class="grid-container">
+        <div v-for="(item, index) in subjects" :key="index" class="grid-item" @click="goBook(item)">
           {{ item }}
         </div>
       </div>
@@ -94,8 +94,11 @@ export default {
     goAddQue() {
       this.$swal.randomAlert()
     },
-    goBook(){
-      this.$router.push({ path: '/queview' });
+    goBook(subject) {
+      this.$router.push({
+        path: '/queview',
+        query: { subject: subject } // 将题库名称作为查询参数传递
+      });
     },
     // 滑动语录
     slideQuotes() {

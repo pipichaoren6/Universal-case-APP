@@ -1,23 +1,15 @@
 <template>
   <div class="dropdown-menu">
     <!-- 菜单按钮 -->
-    <div
-      v-for="(menu, index) in menus"
-      :key="index"
-      class="menu-button"
-      @mouseenter="openDropdown(index)"
-      @mouseleave="closeDropdown(index)"
-    >
-      {{ menu.name }}
+    <div v-for="(menu, index) in menus" :key="index" class="menu-button" @mouseenter="openDropdown(index)"
+      @mouseleave="closeDropdown(index)">
+      <!-- 显示菜单名称和选中的值 -->
+      <span class="menu-text">{{ selectedItems[index] }}</span>
       <!-- 下拉内容 -->
       <transition name="fade">
         <div v-if="activeIndex === index" class="dropdown-content">
-          <div
-            v-for="(item, subIndex) in menu.items"
-            :key="subIndex"
-            class="dropdown-item"
-            @click="handleItemClick(item, index, subIndex)"
-          >
+          <div v-for="(item, subIndex) in menu.items" :key="subIndex" class="dropdown-item"
+            @click="handleItemClick(item, index, subIndex)">
             <span class="item-text">{{ item }}</span>
             <!-- 选中后显示勾 -->
             <span v-if="selectedItems[index] === item" class="checkmark">✔</span>
@@ -38,11 +30,16 @@ export default {
       required: true,
       default: () => [],
     },
+    // 选中的值
+    selectedItems: {
+      type: Array,
+      required: true,
+      default: () => [],
+    },
   },
   data() {
     return {
       activeIndex: null, // 当前激活的菜单索引
-      selectedItems: [], // 存储每个菜单的选中项
     };
   },
   methods: {
@@ -57,17 +54,19 @@ export default {
       }
     },
     // 处理菜单项点击事件
-    handleItemClick(item, menuIndex, subIndex) {
-      // 更新选中项
-      this.selectedItems[menuIndex] = item; // 直接赋值
-      this.$emit('item-click', { item, menuIndex, subIndex }); // 向父组件传递点击的菜单项
+    handleItemClick(item, menuIndex) {
+      // 通知父组件选中的值
+      this.$emit('update:selectedItems', { menuIndex, item });
     },
   },
 };
 </script>
 
 <style scoped>
-html body { margin: 0 !important; }
+html body {
+  margin: 0 !important;
+}
+
 /* 菜单容器样式 */
 .dropdown-menu {
   display: flex;
@@ -78,15 +77,29 @@ html body { margin: 0 !important; }
 
 /* 菜单按钮样式 */
 .menu-button {
-  flex: 1; /* 均分宽度 */
+  flex: 1;
+  /* 均分宽度 */
   padding: 10px 20px;
   color: white;
   text-align: center;
   cursor: pointer;
+  overflow: hidden;
+  /* 超出部分隐藏 */
+  white-space: nowrap;
+  /* 禁止换行 */
+  text-overflow: ellipsis;
+  /* 超出部分显示省略号 */
 }
 
 .menu-button:hover {
   background-color: #2980b9;
+}
+
+/* 菜单文字样式 */
+.menu-text {
+  display: inline-block;
+  max-width: 100%;
+  /* 确保文字不会超出容器 */
 }
 
 /* 下拉内容样式 */
@@ -101,13 +114,15 @@ html body { margin: 0 !important; }
   border-radius: 4px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  text-align: left; /* 确保内容居左对齐 */
+  text-align: left;
+  /* 确保内容居左对齐 */
 }
 
 /* 下拉项样式 */
 .dropdown-item {
   display: flex;
-  justify-content: space-between; /* 文字居左，勾选图标居右 */
+  justify-content: space-between;
+  /* 文字居左，勾选图标居右 */
   align-items: center;
   padding: 10px 20px;
   cursor: pointer;
@@ -121,7 +136,8 @@ html body { margin: 0 !important; }
 
 /* 下拉项文字样式 */
 .item-text {
-  flex: 1; /* 文字占据剩余空间 */
+  flex: 1;
+  /* 文字占据剩余空间 */
 }
 
 /* 勾选图标样式 */

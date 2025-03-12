@@ -7,6 +7,8 @@ import '@/permission' // permission control
 import Swal from 'sweetalert2' // 导入 SweetAlert2
 import 'sweetalert2/dist/sweetalert2.min.css' // 导入 SweetAlert2 的样式
 import swal from '@/utils/swal' // 导入封装的弹窗工具
+import store from './store'; // 引入 Vuex Store
+
 
 // 初始化 vConsole
 const vConsole = new VConsole();
@@ -18,5 +20,6 @@ const app = createApp(App)
 app.config.globalProperties.$swal = Swal
 app.config.globalProperties.$swal = swal
 
+
 // 挂载路由和应用
-app.use(router).mount('#app')
+app.use(router).use(store).mount('#app')
