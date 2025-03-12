@@ -15,6 +15,7 @@
     "element-plus": "^2.8.8",
     "pinia": "^2.2.6",
     "postcss": "^7.0.39",
+    "sweetalert2": "^11.17.2",
     "vconsole": "^3.15.1",
     "vue": "^3.3.4",
     "vue-router": "^4.4.5"
