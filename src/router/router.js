@@ -5,6 +5,9 @@
    const login = () => import('@/views/login.vue')
    const home = () => import('@/views/home.vue')
    const queview = () => import('@/views/queViews/index.vue')
+   const ansview = () => import('@/views/ansViews/index.vue')
+
+
 
 const routes = [
       //登录页
@@ -12,6 +15,8 @@ const routes = [
      //主页
      { path: '/home', component: home },
      //题库页
+     { path: '/queview', component: queview },
+     //回答页
      { path: '/queview', component: queview },
 ]
 

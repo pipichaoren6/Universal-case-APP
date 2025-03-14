@@ -59,6 +59,18 @@ body {
   /* 确保 html 和 body 高度为 100% */
 }
 
+form{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  /* 高度撑满视口 */
+  width: 100vw;
+  /* 宽度撑满视口 */
+  background-color: #f5f5f5;
+  /* 背景颜色 */
+}
 .login-container {
   display: flex;
   flex-direction: column;
@@ -93,7 +105,7 @@ input {
 }
 
 input:focus {
-  border-color: #ff2d55;
+  border-color: #FF4040;
   /* 聚焦时边框颜色 */
   outline: none;
 }
@@ -101,7 +113,7 @@ input:focus {
 .login-button {
   width: 300px;
   padding: 10px;
-  background-color: #ff2d55;
+  background-color: #FF4040;
   /* 抖音红色 */
   color: white;
   border: none;

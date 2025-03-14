@@ -51,7 +51,6 @@
 </template>
 
 <script>
-import { pm1Alert, pm2Alert, pm3Alert } from '@/utils/swal'
 export default {
   name: 'Home',
   data() {

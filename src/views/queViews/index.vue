@@ -16,7 +16,10 @@
             <article v-for="(question, index) in questions" :key="index">
                 <h4>{{ question.title }}</h4>
                 <div>
-                    <p>难度：{{ question.difficulty }}</p>
+                    <p class="difficulty-text">
+                        难度：
+                    <span class="difficulty-value">{{ question.difficulty }}</span>    
+                    </p>
                     <button @click="showAnswer(index)">问答题</button>
                 </div>
             </article>
@@ -128,9 +131,16 @@ article div {
     height: 5vh;
     align-items: center;
 }
+.difficulty-text {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.5); /* 设置文本透明度 */
+}
 
+.difficulty-value {
+  color: rgba(0, 0, 0, 0.75); /* 设置文本完全不透明 */
+}
 button {
-    background-color: #007bff;
+    background-color: #167ff0;
     color: white;
     border: none;
     padding: 5px 10px;
